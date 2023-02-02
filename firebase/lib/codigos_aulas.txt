@@ -1,0 +1,123 @@
+
+  FirebaseFirestore db = FirebaseFirestore.instance;
+
+  /*db.collection('usuarios').doc('002').set(
+    {
+      "nome": "Ana Maria Silva",
+      "idade": "25",
+    },
+  );
+
+  
+  DocumentReference ref = await db.collection('noticias').add(
+    {
+      "titulo": "Ondas de calor em São Paulo",
+      "descricao": "text de exemplo ... ",
+    },
+  );
+  
+
+  //print('Item salvo: ${ref.id}');
+
+  db.collection('noticias').doc('WG2OUJigKromYvtON86k').set(
+    {
+      "titulo": "Ondas de calor em São Paulo (alterado)",
+      "descricao": "text de exemplo ... ",
+    },
+  );*/
+
+  //db.collection('usuarios').doc('003').delete();
+
+  /*DocumentSnapshot snapshot = await db.collection('usuarios').doc('003').get();
+
+  var dados = snapshot.data() as Map;
+
+  print('Nome: ${dados['nome']} e idade: ${dados['idade']} ');*/
+
+  //QuerySnapshot querySnapdhot = await db.collection('usuarios').get();
+
+  //print('Dados usuarios: ${querySnapdhot.docs}');
+
+  /*for (DocumentSnapshot item in querySnapdhot.docs) {
+    var dados = item.data() as Map;
+    print('Dados usuarios: ${dados['nome']} - ${dados['idade']}');
+  }*/
+
+  db.collection('usuarios').snapshots().listen((event) {
+    for (DocumentSnapshot item in event.docs) {
+      var dados = item.data() as Map;
+      print('Dados usuarios: ${dados['nome']} - ${dados['idade']}');
+    }
+  });
+
+    WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  // Banco de Dados
+  FirebaseFirestore db = FirebaseFirestore.instance;
+
+  var pesquisa = 'an';
+
+  QuerySnapshot querySnapshot = await db
+      .collection('usuarios')
+      //.where('nome', isEqualTo: 'jamilton')
+      //.where('idade', isEqualTo: 31)
+      //.where('idade', isGreaterThan: 15)
+      //.where('idade', isLessThan: 30)
+      //.orderBy('idade', descending: true)
+      //.orderBy('nome', descending: false)
+      //.limit(1)
+      .where('nome', isGreaterThanOrEqualTo: pesquisa)
+      .where('nome', isLessThanOrEqualTo: '$pesquisa' '\uf8ff')
+      .get();
+
+  for (DocumentSnapshot item in querySnapshot.docs) {
+    var dados = item.data() as Map;
+    print('Dados usuarios: ${dados['nome']} - ${dados['idade']}');
+  }
+
+  Aula 155:
+   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  FirebaseAuth auth = FirebaseAuth.instance;
+
+  // Criando um usuário com email e senha
+  String email = 'jamilton@gmail.com';
+  String senha = '123456';
+  /*
+  auth
+      .createUserWithEmailAndPassword(
+    email: email,
+    password: senha,
+  )
+      .then((firebaseUser) {
+    print('Novo usuário: sucesso!! e-mail: ${firebaseUser.user!.email} ');
+  }).catchError((erro) {
+    print('Novo usuario: erro $erro');
+  });
+  */
+
+  //auth.signOut();
+
+  //Logando Usuário
+  /*auth
+      .signInWithEmailAndPassword(
+    email: email,
+    password: senha,
+  )
+      .then((firebaseUser) {
+    print('Logar usuário: sucesso!! e-mail: ${firebaseUser.user!.email} ');
+  }).catchError((erro) {
+    print('Logar usuario: erro $erro');
+  });
+  */
+
+  User? usuarioAtual = await auth.currentUser;
+  if (usuarioAtual != null) {
+    //logado
+    print('Usuario atual está logado email: ${usuarioAtual.email}');
+  } else {
+    //deslogado
+    print('Usuario atual está deslogado!!');
+  }
