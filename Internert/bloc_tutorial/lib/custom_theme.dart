@@ -15,5 +15,5 @@ class CustomTheme {
     900: Color(0xFF000000),
   });
 
-  static const int _blacPrimaryValue = 0xFF0000;
+  static const int _blacPrimaryValue = 0xFF000000;
 }

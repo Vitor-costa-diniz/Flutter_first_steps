@@ -17,16 +17,17 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.indigo,
         appBarTheme: AppBarTheme.of(context).copyWith(
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            foregroundColor: CustomTheme.deepBlack,
-            centerTitle: false,
-            titleTextStyle: const TextStyle(
-              fontSize: 26,
-              color: CustomTheme.deepBlack,
-              fontWeight: FontWeight.bold,
-              letterSpacing: -1,
-            )),
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          foregroundColor: CustomTheme.deepBlack,
+          centerTitle: false,
+          titleTextStyle: const TextStyle(
+            fontSize: 26,
+            color: CustomTheme.deepBlack,
+            fontWeight: FontWeight.bold,
+            letterSpacing: -1,
+          ),
+        ),
       ),
       home: const ClientsPage(),
     );
