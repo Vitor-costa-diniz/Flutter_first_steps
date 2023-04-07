@@ -89,6 +89,7 @@ splayTreeSet() {
   print('Implementação: ${splayTreeSet.runtimeType}'); //SplayTreeSet<String>
   splayTreeSet.add('Info1');
   splayTreeSet.add('Info3');
+
   splayTreeSet.add('Info');
   splayTreeSet.add('Info2');
   // splayTreeSet.add(null); // Não pode conter null
