@@ -145,7 +145,7 @@ listWhere() {
   print('16.1.4 List Where\n');
 
   List<int> idades = [36, 12, 18, 31, 17, 23];
-  print(idades.where((e) => e is int)); //retorn em Itarable
+  print(idades.where((e) => e is int)); //retorn em Iterable
   print(idades.whereType<int>());
   List<int> adultos = idades.where((int e) => e > 17).toList();
   var crianca = idades.singleWhere((int e) => e < 12, orElse: () => 0);
@@ -213,9 +213,9 @@ listFold() {
 void main() {
   //listForEach();
   //listExpand();
-  //listMap();
+  // listMap();
   //listEvery();
   //listWhere();
   // listReduce();
-  listFold();
+  // listFold();
 }
